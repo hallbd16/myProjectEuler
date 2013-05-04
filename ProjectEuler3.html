@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<title>write example</title>
+
+<script type="text/javascript">
+
+/*  The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?  */
+
+//Find prime factors-  Divide until left only with prime factors
+
+//test if n is divisible by a number, take the complementary factor and check if prime.
+
+
+function isPrime(n) {
+    if(n === 2 || n === 3) {
+        return true;
+    }else if (n%2===0) {
+        return false
+    }
+    var sqrtN = Math.floor(Math.sqrt(n));
+    for (var i = 5; i <= sqrtN; i+=2) {
+        if (n % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function primeFactor(n) {
+    for (i = Math.floor(Math.sqrt(n)); i > 1; i--) {
+        if (n % i === 0 && isPrime(i)) {
+            var complement= n/i
+            if (isPrime(complement)) {
+                console.log(complement);
+                return complement;
+            }else {
+            return i
+            }
+        }
+    }
+    return("there are no prime factors, the number is prime")
+}
+
+document.write(primeFactor(600851475143));
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
